@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Router from '../routes';
 
 export default class HomeScreen extends Component {
@@ -19,6 +19,14 @@ export default class HomeScreen extends Component {
     return (
       <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
         <Text>HomeScreen!</Text>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.performAction(({ tabs, stacks }) => {
+              tabs('main').jumpToTab('profile');
+            });
+          }}>
+          <Text>Go to Profile Screen Tab</Text>
+      </TouchableOpacity>
       </View>
     )
   }
